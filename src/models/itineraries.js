@@ -33,7 +33,7 @@ const itinerarySchema = new mongoose.Schema({
     vibe: {
         type: String,
         enum: ['adventure', 'romantic', 'family-friendly'],
-    }
+    } // Front end needs to implement a drop-down menu for each of the 3 vibe selections, and an unspecified option since we're not requiring it.
 })
 
 // Pre-save hook
