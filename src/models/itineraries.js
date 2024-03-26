@@ -16,4 +16,20 @@ const itinerarySchema = new mongoose.Schema({
     days: [daySchema],
 })
 
-module.exports = mongoose.model('Itinerary', itinerarySchema)
+// Pre-save hook
+itinerarySchema.pre('save', function(next) {
+    this.days = [] // This will clear existing days to avoid duplicates if the document is being updated
+
+    const start = new Date(this.startDate)
+    const end = new Date(this.endDate)
+
+    for (let day = new Date(start); day <= end; day.setDate(day.getDate() + 1)) {
+        this.days.push({ date: new Date(day) }) // Creates a daySchema subdocument for each day
+    }
+
+    next() // Save the document
+})
+
+const Itinerary = mongoose.model('Itinerary', itinerarySchema)
+
+export default Itinerary
