@@ -2,9 +2,9 @@
 
 const ViewMyEscapes = () => {
     return (
-        <>
-          <h1>This is the ViewMyEscapes page</h1>
-        </>
+      <div style={{height:'80vh'}}>
+      <h1>This is the ViewMyEscape page</h1>
+    </div>
     );
 }
 

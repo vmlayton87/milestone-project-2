@@ -7,7 +7,7 @@ import react_logo from '../assets/react.svg'
 const Navigation = () => {
     return (
         <div>
-          <Navbar expand="lg" className="bg-body-tertiary" fixed='top' style={{height:'10vh'}}>
+          <Navbar expand="lg" className="bg-body-tertiary" sticky='top' style={{height:'10vh'}}>
             <Container>
               <Navbar.Brand href="/home">
                 <img src={react_logo} alt='logo' style={{height:'75px', width:'75px'}}/>
@@ -15,7 +15,7 @@ const Navigation = () => {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link href="/home">Home</Nav.Link>
+                  <Nav.Link href="/">Home</Nav.Link>
                   <NavDropdown title="Inspirations" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/inspiration/category_1">Category 1</NavDropdown.Item>
                     <NavDropdown.Item href="/inspiration/category_2">

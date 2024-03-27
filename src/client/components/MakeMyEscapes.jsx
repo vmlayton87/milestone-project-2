@@ -2,9 +2,9 @@
 
 const MakeMyEscapes = () => {
     return (
-        <>
-          <h1>This is the MakeMyEscapes page</h1>
-        </>
+      <div style={{height:'80vh'}}>
+      <h1>This is the MakeMyEscapes page</h1>
+    </div>
     );
 }
 
