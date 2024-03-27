@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose"
 
 const activitySchema = new mongoose.Schema({
     description: String,
@@ -32,8 +32,8 @@ const itinerarySchema = new mongoose.Schema({
     days: [daySchema],
     vibe: {
         type: String,
-        enum: ['adventure', 'romantic', 'family-friendly'],
-    } // Front end needs to implement a drop-down menu for each of the 3 vibe selections, and an unspecified option since we're not requiring it.
+        enum: ['adventure', 'romantic', 'relaxing', 'family-friendly'],
+    } // Front end needs to implement a drop-down menu for each of the 4 vibe selections, and an unspecified option since we're not requiring it.
 })
 
 // Pre-save hook
