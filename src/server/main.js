@@ -1,11 +1,14 @@
 import express from "express";
 import ViteExpress from "vite-express";
 import connectDB from "./config/database.js";
- 
-
-connectDB()
 
 const app = express();
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+connectDB()
+
+
 
 
 app.get("/hello", (req, res) => {
