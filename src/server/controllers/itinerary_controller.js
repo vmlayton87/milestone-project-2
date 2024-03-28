@@ -6,9 +6,9 @@ import Itinerary from "../models/itineraries.js"
 router.get ("/", (req, res)=>{
     // res.send("Hello from the itinerary get call.")
     Itinerary.find()
-    .then(foundIteneraires => {
-      console.log(foundIteneraires)
-      res.send(foundIteneraires)
+    .then(foundItineraires => {
+      console.log(foundItineraires)
+      res.send(foundItineraires)
       
     })
     .catch(err=>{console.log(err)})
