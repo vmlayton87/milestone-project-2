@@ -9,7 +9,7 @@ const Navigation = () => {
         <div>
           <Navbar expand="lg" className="bg-body-tertiary" sticky='top' style={{height:'10vh'}}>
             <Container>
-              <Navbar.Brand href="/home">
+              <Navbar.Brand href="/">
                 <img src={react_logo} alt='logo' style={{height:'75px', width:'75px'}}/>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
