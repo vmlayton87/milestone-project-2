@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import react_logo from '../assets/react.svg'
+import temp_logo from '../assets/travlr.png'
 
 const Navigation = () => {
     return (
@@ -10,7 +10,7 @@ const Navigation = () => {
           <Navbar expand="lg" className="bg-body-tertiary" sticky='top' style={{height:'10vh'}}>
             <Container>
               <Navbar.Brand href="/home">
-                <img src={react_logo} alt='logo' style={{height:'75px', width:'75px'}}/>
+                <img src={temp_logo} alt='logo' style={{height:'50px', width:'100px'}}/>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
