@@ -1,6 +1,8 @@
 import express from "express";
 const router = express.Router();
 import Itinerary from "../models/itinerary.js"
+import User from "../models/user.js";
+import bcrypt from "bcryptjs"
 
 // get all itineraries
 router.get ("/", (req, res)=>{
@@ -66,6 +68,25 @@ router.delete("/:id", (req, res)=>{
     console.log(err)
     res.send(err)
   })
+})
+
+// user login route
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body
+  try {
+    const user = await User.findOne({ email: email.toLowerCase() })
+    if (!user) {
+      return res.status(401).json({ message: "User not found" })
+    }
+    const isMatch = await bcrypt.compare(password, user.password)
+    if(!isMatch) {
+      return res.status(401).json({ message: "Invalid login credentials" })
+    }
+    res.status(200).json({ message: "Login successful!" })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ message: "Server error" })
+  }
 })
 
 
