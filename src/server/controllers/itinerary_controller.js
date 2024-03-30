@@ -1,8 +1,10 @@
 import express from "express";
 const router = express.Router();
 import Itinerary from "../models/itinerary.js"
-import User from "../models/user.js";
+import User from "../models/user.js"
 import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
+import 'dotenv/config.js'
 
 // get all itineraries
 router.get ("/", (req, res)=>{
@@ -82,7 +84,15 @@ router.post("/login", async (req, res) => {
     if(!isMatch) {
       return res.status(401).json({ message: "Invalid login credentials" })
     }
-    res.status(200).json({ message: "Login successful!" })
+
+    // Generate JWT
+    const token = jwt.sign(
+      { userId: user._id.toString() },
+      process.env.JWT_SECRET, // JSON web token with the secret key, kind of like a password to verify user authenticity.
+      { expiresIn: '1h' }
+    )
+
+    res.status(200).json({ message: "Login successful!", token: token }) // sends the token back to the client for subsequent authenticated requests
   } catch (err) {
     console.error(err)
     res.status(500).json({ message: "Server error" })
