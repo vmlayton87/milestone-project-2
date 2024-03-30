@@ -27,13 +27,13 @@ userSchema.pre('save', async function(next) {
     if (!this.isModified('password')) return next() // Only hashes the password if it is new or has been modified
 
     try {
-        const salt = await bcrypt.getSalt(12)
+        const salt = await bcrypt.getSalt(12) // 12 is the cost factor, aka "salt rounds." Controls how much time is needed to calculate a single bcrypt hash. The higher the cost factor, the more hashing rounds are performed, 
         this.password = await bcrypt.hash(this.password, salt)
         next()
     } catch (err) {
         next(err)
     }
-})
+}) // Salting adds a random string to the password before it's hashed for better security.
 
 const User = mongoose.model('User', userSchema)
 export default User
