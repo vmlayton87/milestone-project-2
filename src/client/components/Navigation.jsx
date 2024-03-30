@@ -7,7 +7,7 @@ import temp_logo from '../assets/travlr.png'
 const Navigation = () => {
     return (
         <div>
-          <Navbar expand="lg" className="bg-body-tertiary" sticky='top' style={{height:'10vh'}}>
+          <Navbar expand="lg" className="bg-body-tertiary" fixed='top'style={{height:'10vh'}}>
             <Container>
               <Navbar.Brand href="/">
                 <img src={temp_logo} alt='logo' style={{height:'50px', width:'100px'}}/>

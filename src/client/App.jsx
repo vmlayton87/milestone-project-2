@@ -4,7 +4,7 @@ import './App.css';
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
-import Inspirations from './components/Inspirations';
+// import Inspirations from './components/Inspirations';
 import MakeMyEscapes from './components/MakeMyEscapes';
 import ViewMyEscapes from './components/ViewMyEscapes';
 

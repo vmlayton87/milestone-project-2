@@ -3,12 +3,12 @@
     height: 100vh;
   }
   
-  Nav {
+Nav {
     font-size: larger;
     font-weight: bolder;
     font-family: 'Courier New', Courier, monospace;
   }
   
-  NavDropdown {
+NavDropdown {
     font-family: 'Courier New', Courier, monospace;
   }
