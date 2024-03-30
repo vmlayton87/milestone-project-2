@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 import temp_logo from '../assets/travlr.png'
 
 const Navigation = () => {
@@ -16,7 +16,7 @@ const Navigation = () => {
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                   <Nav.Link href="/">Home</Nav.Link>
-                  <NavDropdown title="Inspirations" id="basic-nav-dropdown">
+                  {/* <NavDropdown title="Inspirations" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/inspiration/category_1">Category 1</NavDropdown.Item>
                     <NavDropdown.Item href="/inspiration/category_2">
                     Category 2
@@ -26,7 +26,7 @@ const Navigation = () => {
                     <NavDropdown.Item href="/inspiration/category_all">
                     Category all
                     </NavDropdown.Item>
-                  </NavDropdown>
+                  </NavDropdown> */}
                   <Nav.Link href="/make_my_escapes">Make My Escapes</Nav.Link>
                   <Nav.Link href="/view_my_escapes">View My Escapes</Nav.Link>                 
                 </Nav>
