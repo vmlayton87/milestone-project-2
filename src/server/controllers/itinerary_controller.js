@@ -35,9 +35,13 @@ itinerary.get ("/", (req, res)=>{
     console.log(req.body)
 
     Itinerary.create(req.body)
-    .then(newItinerary =>{
+    .then(async (newItinerary)=>{
+      await newItinerary.createDaysArray()
       res.send(newItinerary)
     })
+    // .then(newItinerary =>{
+    //   res.send(newItinerary)
+    // })
     .catch(err=>{
       console.log(err)
       res.send(err)

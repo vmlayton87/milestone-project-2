@@ -2,7 +2,7 @@ import express from "express";
 const day = express.Router();
 import Day from "../models/day";
 
-// get all itineraries
+// get all days
 day.get ("/", (req, res)=>{
     // res.send("Hello from the day get call.")
     Day.find()
@@ -57,7 +57,7 @@ Day.findByIdAndUpdate(req.params.id, req.body, {new:true})
 })
 })
 
-  //delete an itinerary *will need to create an "are you sure" check before running this on the client side.
+  //delete a day *will need to create an "are you sure" check before running this on the client side.
 day.delete("/:id", (req, res)=>{
   Day.findByIdAndDelete(req.params.id)
   .then(deletedDay=>{
