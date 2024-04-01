@@ -28,6 +28,28 @@ const itinerarySchema = new mongoose.Schema({
 //     // Save the document
 // })
 
+// what chatgpt says to do for a virtual hook:
+
+itinerarySchema.virtual('computedDays').get(function() {
+    const daysArray = [];
+    let currentDate = new Date(this.startDate);
+    const endDate = new Date(this.endDate);
+
+    while (currentDate <= endDate) {
+        daysArray.push({
+            dayNumber: daysArray.length + 1,
+            date: new Date(currentDate),
+            activities: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Activity' }]
+        });
+        currentDate.setDate(currentDate.getDate() + 1); // Increment current date by 1 day
+    }
+
+    return daysArray;
+});
+
+// Ensure virtuals are included in toJSON output
+itinerarySchema.set('toJSON', { getters: true });
+
 const Itinerary = mongoose.model('Itinerary', itinerarySchema)
 
 export default Itinerary

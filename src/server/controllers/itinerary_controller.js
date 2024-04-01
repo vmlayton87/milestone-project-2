@@ -1,9 +1,9 @@
 import express from "express";
-const router = express.Router();
+const itinerary = express.Router();
 import Itinerary from "../models/itinerary.js"
 
 // get all itineraries
-router.get ("/", (req, res)=>{
+itinerary.get ("/", (req, res)=>{
     // res.send("Hello from the itinerary get call.")
     Itinerary.find()
     .then(foundItineraires => {
@@ -14,7 +14,9 @@ router.get ("/", (req, res)=>{
     .catch(err=>{console.log(err)})
   })
 
-  router.get("/:id", (req,res)=>{
+
+  // get itinerary by id
+  itinerary.get("/:id", (req,res)=>{
     
     Itinerary.findById(req.params.id)
     
@@ -28,7 +30,7 @@ router.get ("/", (req, res)=>{
     
 
   // create a new itinerary
-  router.post("/new", (req,res)=>{
+  itinerary.post("/new", (req,res)=>{
 
     console.log(req.body)
 
@@ -44,7 +46,7 @@ router.get ("/", (req, res)=>{
 
   //update by id
 
-  router.put("/:id", (req, res)=>{
+  itinerary.put("/:id", (req, res)=>{
     Itinerary.findByIdAndUpdate(req.params.id, req.body, {new:true})
     .then(updatedItinerary=>{
       res.send(updatedItinerary)
@@ -56,7 +58,7 @@ router.get ("/", (req, res)=>{
   })
 
   //delete an itinerary *will need to create an "are you sure" check before running this on the client side.
-router.delete("/:id", (req, res)=>{
+itinerary.delete("/:id", (req, res)=>{
   Itinerary.findByIdAndDelete(req.params.id)
   .then(deletedItinerary=>{
     console.log(deletedItinerary)
@@ -69,4 +71,4 @@ router.delete("/:id", (req, res)=>{
 })
 
 
-  export default router
+  export default itinerary
