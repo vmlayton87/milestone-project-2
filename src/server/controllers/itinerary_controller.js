@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import Itinerary from "../models/itineraries.js"
+import Itinerary from "../models/itinerary.js"
 
 // get all itineraries
 router.get ("/", (req, res)=>{
