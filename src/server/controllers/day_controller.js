@@ -8,7 +8,7 @@ day.get ("/", (req, res)=>{
     Day.find()
     .then(foundDays => {
       console.log(foundDays)
-      res.send(foundDays)
+      res.status(200).send(foundDays)
       
     })
     .catch(err=>{console.log(err)})
@@ -21,7 +21,7 @@ day.get("/:id", (req,res)=>{
 Day.findById(req.params.id)
 
 .then(foundDay => {
-    res.send(foundDay)
+    res.status(200).send(foundDay)
     })
     .catch(err=>{
     console.log(err)
@@ -36,7 +36,7 @@ Day.findById(req.params.id)
 
 Day.create(req.body)
 .then(newDay =>{
-    res.send(newDay)
+    res.status(201).send(newDay)
 })
 .catch(err=>{
     console.log(err)
@@ -49,7 +49,7 @@ Day.create(req.body)
 day.put("/:id", (req, res)=>{
 Day.findByIdAndUpdate(req.params.id, req.body, {new:true})
 .then(updatedDay=>{
-    res.send(updatedDay)
+    res.status(200).send(updatedDay)
 })
 .catch(err=>{
     console.log(err)
@@ -62,7 +62,7 @@ day.delete("/:id", (req, res)=>{
   Day.findByIdAndDelete(req.params.id)
   .then(deletedDay=>{
     console.log(deletedDay)
-    res.json({message: "deleted the following:", deleted: deletedDay})
+    res.status(200).json({message: "deleted the following:", deleted: deletedDay})
   })
   .catch(err=>{
     console.log(err)

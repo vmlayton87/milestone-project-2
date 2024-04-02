@@ -8,7 +8,7 @@ activity.get ("/", (req, res)=>{
     Activity.find()
     .then(foundActivities => {
       console.log(foundActivities)
-      res.send(foundActivities)
+      res.status(200).send(foundActivities)
       
     })
     .catch(err=>{console.log(err)})
@@ -21,7 +21,7 @@ activity.get("/:id", (req,res)=>{
 Activity.findById(req.params.id)
 
 .then(foundActivity => {
-    res.send(foundActivity)
+    res.status(200).send(foundActivity)
     })
     .catch(err=>{
     console.log(err)
@@ -36,7 +36,7 @@ console.log(req.body)
 
 Activity.create(req.body)
 .then(newActivity =>{
-    res.send(newActivity)
+    res.status(200).send(newActivity)
 })
 .catch(err=>{
     console.log(err)
@@ -49,7 +49,7 @@ Activity.create(req.body)
 activity.put("/:id", (req, res)=>{
 Activity.findByIdAndUpdate(req.params.id, req.body, {new:true})
 .then(updatedActivity=>{
-    res.send(updatedActivity)
+    res.status(200).send(updatedActivity)
 })
 .catch(err=>{
     console.log(err)
@@ -62,11 +62,11 @@ activity.delete("/:id", (req, res)=>{
   Activity.findByIdAndDelete(req.params.id)
   .then(deletedActivity=>{
     console.log(deletedActivity)
-    res.json({message: "deleted the following:", deleted: deletedActivity})
+    res.status(200).json({message: "deleted the following:", deleted: deletedActivity})
   })
   .catch(err=>{
     console.log(err)
-    res.send(err)
+    res.status(404).send(err)
   })
 })
 

@@ -8,7 +8,7 @@ itinerary.get ("/", (req, res)=>{
     Itinerary.find()
     .then(foundItineraires => {
       console.log(foundItineraires)
-      res.send(foundItineraires)
+      res.status(200).send(foundItineraires)
       
     })
     .catch(err=>{console.log(err)})
@@ -21,7 +21,7 @@ itinerary.get ("/", (req, res)=>{
     Itinerary.findById(req.params.id)
     
     .then(foundItinerary => {
-        res.send(foundItinerary)
+        res.status(200).send(foundItinerary)
       })
       .catch(err=>{
         console.log(err)
@@ -37,11 +37,8 @@ itinerary.get ("/", (req, res)=>{
     Itinerary.create(req.body)
     .then(async (newItinerary)=>{
       await newItinerary.createDaysArray()
-      res.send(newItinerary)
+      res.status(201).send(newItinerary)
     })
-    // .then(newItinerary =>{
-    //   res.send(newItinerary)
-    // })
     .catch(err=>{
       console.log(err)
       res.send(err)
@@ -53,7 +50,7 @@ itinerary.get ("/", (req, res)=>{
   itinerary.put("/:id", (req, res)=>{
     Itinerary.findByIdAndUpdate(req.params.id, req.body, {new:true})
     .then(updatedItinerary=>{
-      res.send(updatedItinerary)
+      res.status(200).send(updatedItinerary)
     })
     .catch(err=>{
       console.log(err)
@@ -66,7 +63,7 @@ itinerary.delete("/:id", (req, res)=>{
   Itinerary.findByIdAndDelete(req.params.id)
   .then(deletedItinerary=>{
     console.log(deletedItinerary)
-    res.json({message: "deleted the following:", deleted: deletedItinerary})
+    res.status(200).json({message: "deleted the following:", deleted: deletedItinerary})
   })
   .catch(err=>{
     console.log(err)
