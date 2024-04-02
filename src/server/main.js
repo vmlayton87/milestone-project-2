@@ -1,6 +1,6 @@
-import express from "express";
-import ViteExpress from "vite-express";
-import connectDB from "./config/database.js";
+import express from "express"
+import ViteExpress from "vite-express"
+import connectDB from "./config/database.js"
 import authController from "./controllers/authController.js"
 import itineraryController from "./controllers/itinerary_controller.js"
 
