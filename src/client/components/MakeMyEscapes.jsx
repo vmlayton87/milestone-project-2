@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-const Default = require('../default')
 
 function newEscape() {
   const [formData, setFormData] = useState({
@@ -24,7 +23,6 @@ function newEscape() {
   };
 
   return (
-    <Default>
       <form onSubmit={handleSubmit}>
         <label>
           Destination
@@ -68,7 +66,6 @@ function newEscape() {
         <br />
         <button type="submit">Submit</button>
       </form>
-  </Default>
   );
 
 }
