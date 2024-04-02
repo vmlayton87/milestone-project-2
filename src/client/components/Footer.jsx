@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 const Footer = () => {
     return (
       <>
-         <Navbar bg="light" data-bs-theme="light" sticky='bottom' style={{height:'10vh'}}>
+         <Navbar bg="light" data-bs-theme="light" fixed='bottom' style={{height:'10vh'}}>
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
