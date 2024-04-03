@@ -16,14 +16,35 @@ function login() {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // submit to server here
-    console.log(formData);
+    
+    try {
+      const response = await fetch('/login', { // Adjust this URL if your API endpoint is different
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Login successful', data);
+        // Here you might want to do further processing, like saving the token or redirecting the user
+      } else {
+        console.error('Login failed');
+        // Here you can handle errors, such as displaying a message to the user
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+      // Handle the error, for example, by displaying an error message
+    }
   };
+  
 
   return (
-    <div class="Create">
+    <div className="Create">
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="email">
         <Form.Label>Email Address</Form.Label>
