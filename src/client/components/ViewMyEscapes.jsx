@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import axios from "axios"
 
 const ViewMyEscapes = () => {
 
@@ -8,8 +9,8 @@ const ViewMyEscapes = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const API_URL = `http://localhost:3000/itinerary/`
-    const fetchData = async () => {
+    
+    const fetchItineraries = async () => {
       try {
         const response = await fetch(API_URL);
         const resData = await response.json();
