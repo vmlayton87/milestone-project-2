@@ -28,7 +28,8 @@ const Navigation = () => {
                     </NavDropdown.Item>
                   </NavDropdown> */}
                   <Nav.Link href="/make_my_escapes">Make My Escapes</Nav.Link>
-                  <Nav.Link href="/view_my_escapes">View My Escapes</Nav.Link>                 
+                  <Nav.Link href="/view_my_escapes">View My Escapes</Nav.Link> 
+                  <Nav.Link href="/login">Login</Nav.Link>                 
                 </Nav>
               </Navbar.Collapse>
             </Container>
