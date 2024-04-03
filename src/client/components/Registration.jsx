@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function Register() {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
-  })
+  });
+  const navigate = useNavigate();
 
   const handleInput = (event) => {
     const { name, value } = event.currentTarget;
@@ -18,56 +20,61 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
     try {
-      const response = await fetch('/login', {
+      const response = await fetch('/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
-  
-      if (response.ok) {
-        const data = await response.json()
-        console.log('Login successful', data)
-        // May want to add further processing, like saving the token or redirecting the user
-      } else {
-        console.error('Login failed')
+
+      if (!response.ok) {
+        const errorDetails = await response.json();
+        throw new Error(errorDetails.message || 'Failed to register.');
       }
+
+      const data = await response.json();
+      console.log('Registration successful', data);
+      
+      localStorage.setItem('token', data.token);
+
+      navigate('/');
     } catch (error) {
-      console.error('An error occurred:', error)
+      console.error('Registration failed:', error);
     }
-  }
-  
+  };
 
   return (
     <div className="Create">
+      <h2>Register</h2>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="email">
-        <Form.Label>Email Address</Form.Label>
+        <Form.Group controlId="registerEmail">
+          <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="email"
             name="email"
             value={formData.email}
             onChange={handleInput}
+            required
           />
         </Form.Group>
         <br />
-        <Form.Group controlId="password">
-        <Form.Label>Password</Form.Label>
+        <Form.Group controlId="registerPassword">
+          <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             name="password"
             value={formData.password}
             onChange={handleInput}
+            required
           />
         </Form.Group>
         <br />
-        <Button variant="primary" type="submit">Submit</Button>
+        <Button variant="primary" type="submit">Register</Button>
       </Form>
     </div>
   );
 }
 
-export default Login;
+export default Register;

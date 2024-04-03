@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage";
 import MakeMyEscapes from './components/MakeMyEscapes';
 import ViewMyEscapes from './components/ViewMyEscapes';
 import Login from "./components/Login";
+import Register from "./components/Registration";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/make_my_escapes" element={<MakeMyEscapes />} />
             <Route path="/view_my_escapes" element={<ViewMyEscapes />} />
             <Route path="/login" element={<Login />} />
+            <Route path ="/register" element={<Register />} />
           </Routes>
         <Footer />
       </Router>
