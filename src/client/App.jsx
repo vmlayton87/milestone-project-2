@@ -9,11 +9,13 @@ import MakeMyEscapes from './components/MakeMyEscapes';
 import ViewMyEscapes from './components/ViewMyEscapes';
 import Login from "./components/Login";
 import Register from "./components/Registration";
+import { AuthProvider } from "./components/AuthContext";
 
 function App() {
 
   return (
     <div className="App">
+      <AuthProvider>
       <Router>
         <Navigation/>
           <Routes>
@@ -29,6 +31,7 @@ function App() {
           </Routes>
         <Footer />
       </Router>
+      </AuthProvider>
     </div>
   );
 }
