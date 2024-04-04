@@ -32,7 +32,6 @@ function App() {
             <Route path="/my_escapes" element={<ViewMyEscapes />} />
             <Route path="/my_new_escapes" element={<MakeMyEscapes />} />
             {/* <Route path="/view_my_escapes" element={<ViewMyEscapes />} /> */}
-            <Route path="/view_my_escapes" element={<ViewMyEscapes />} />
             <Route path="/login" element={<Login />} />
             <Route path ="/register" element={<Register />} />
           </Routes>
