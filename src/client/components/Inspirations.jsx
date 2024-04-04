@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
@@ -59,7 +60,9 @@ const BrowseEscapes = () => {
                <Card style={cardStyle}>
                  <Card.Img variant="top" src="https://placehold.co/10x10" />
                  <Card.Body>
-                   <Card.Title><a href={`/escapes/${itinerary._id}`}>{itinerary.destination}</a></Card.Title>
+                 <Card.Title>
+                   <Link to={`/escapes/${itinerary._id}`}>{itinerary.destination}</Link>
+                 </Card.Title>
                    <Card.Text>
                      Description data goes here
                    </Card.Text>
