@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from "axios";
 
 function newEscape() {
   const [formData, setFormData] = useState({
-    destination: '',
-    startDate: '',
-    endDate: '',
-    vibe: ''
+    destination: null,
+    startDate: null,
+    endDate: null,
+    vibe: null
   })
 
-  const handleInput = (event) => {
-    const { destination, value } = event.target;
-    setFormData({
-      ...formData,
-      [destination]: value
-    });
-  };
+  // const handleInput = (event) => {
+  //   const { name, value } = event.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value
+  //   });
+  // };
 
   const handleDate = (e) => {
     const { name, value } = e.target;
@@ -31,11 +32,12 @@ function newEscape() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // submit to server here
-    console.log(formData);
+    axios.post(`/itinerary/new`, {destination, startDate, endDate, vibe})
+    
   };
 
   return (
-    <div class="Create">
+    <div className="Create">
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="destinationName">
         <Form.Label>Destination</Form.Label>
@@ -43,7 +45,9 @@ function newEscape() {
             type="text"
             name="destination"
             value={formData.destination}
-            onChange={handleInput}
+            // onInput={handleInput}
+            onChange= {e=>setFormData({destination:e.target.value, startDate, endDate ,vibe})}
+            
           />
         </Form.Group>
         <br />
@@ -58,7 +62,8 @@ function newEscape() {
             type="date"
             name="startDate"
             value={formData.startDate}
-            onChange={handleDate}
+            onInput={handleDate}
+            onChange= {e=>setFormData({destination, startDate: e.target.value, endDate ,vibe})}
           />
         </Form.Group>
         <br />
@@ -68,13 +73,16 @@ function newEscape() {
             type="date"
             name="endDate"
             value={formData.endDate}
-            onChange={handleDate}
+            onInput={handleDate}
+            onChange= {e=>setFormData({destination, startDate, endDate: e.target.value ,vibe})}
           />
         </Form.Group>
         <br />
         <Form.Group controlId="endDate">
         <Form.Label>Vibe</Form.Label>
-          <Form.Select aria-label="Select a vibe">
+          <Form.Select aria-label="Select a vibe"
+          onChange= {e=>setFormData({destination, startDate, endDate ,vibe: e.target.value})}
+          value={formData.vibe}>
             <option>Select one...</option>
             <option value="1">First Option</option>
             <option value="2">Second Option</option>

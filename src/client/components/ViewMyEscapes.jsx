@@ -10,16 +10,16 @@ const ViewMyEscapes = () => {
 
   useEffect(() => {
     
-    const fetchItineraries = async () => {
+    const fetchItineraryData = async () => {
       try {
-        const response = await fetch(API_URL);
-        const resData = await response.json();
-        setItineraryData(resData);
+        const {data} = await axios.get('/itinerary')
+      
+        setItineraryData(data);
       } catch (error) {
         setError(error.message);
       }
     }
-    fetchData();
+    fetchItineraryData();
 }, []);
     
 
