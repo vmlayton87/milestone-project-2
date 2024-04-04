@@ -22,7 +22,7 @@ function App() {
             <Route path="/inspiration/category_all" element={<Inspirations />} /> */}
             <Route path="/escapes" element={<Inspirations />} />
             <Route path="/my_escapes" element={<ViewMyEscapes />} />
-            <Route path="/make_my_escapes" element={<MakeMyEscapes />} />
+            <Route path="/my_new_escapes" element={<MakeMyEscapes />} />
             {/* <Route path="/view_my_escapes" element={<ViewMyEscapes />} /> */}
           </Routes>
         <Footer />
