@@ -4,10 +4,11 @@ import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 import temp_logo from '../assets/travlr.png'
 import LogoutButton from './LogoutButton';
+import { useAuth } from './AuthContext';
 
 const Navigation = () => {
 
-  const isLoggedIn = localStorage.getItem('token') // checking to see if user is logged in. This will change whether the log button is login or logout.
+  const { isAuthenticated, logout } = useAuth()
 
     return (
         <div>
@@ -33,7 +34,7 @@ const Navigation = () => {
                   </NavDropdown> */}
                   <Nav.Link href="/make_my_escapes">Make My Escapes</Nav.Link>
                   <Nav.Link href="/view_my_escapes">View My Escapes</Nav.Link> 
-                  {isLoggedIn ? (
+                  {isAuthenticated ? (
                     <LogoutButton /> // Render the LogoutButton if the user is logged in
                   ) : (
                     <Nav.Link href="/login">Login</Nav.Link> // Otherwise, show the login link

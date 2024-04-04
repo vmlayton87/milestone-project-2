@@ -1,20 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { useAuth } from './AuthContext';
 
-// Removes the JSW token and redirects to home page
+// Now using AuthContext to manage state for login/logout
 
 function LogoutButton() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const { logout } = useAuth()
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-
-    navigate('/');
+    logout()
+    navigate('/')
   };
 
+  // Need to figure out how to get rid of button background
   return (
-    <Button variant="danger" onClick={handleLogout}>Log Out</Button>
+    <Button variant="secondary" onClick={handleLogout}>Log Out</Button>
   );
 }
 
