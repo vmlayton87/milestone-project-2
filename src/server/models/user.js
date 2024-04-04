@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
+// Password requirements are not working
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
