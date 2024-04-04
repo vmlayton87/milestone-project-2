@@ -27,9 +27,6 @@ router.post("/login", async (req, res) => {
     console.log("Password match result:", isMatch)
 
     if (!isMatch) {
-      console.log("Received password:", password);
-      console.log("Stored hash:", user.password);
-
       console.log("Password does not match")
       return res.status(401).json({ message: "Invalid login credentials" })
     }

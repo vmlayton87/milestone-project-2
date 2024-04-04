@@ -9,6 +9,7 @@ function Login() {
     email: '',
     password: ''
   })
+  const [error, setError] = useState('')
   const navigate = useNavigate()
   const { login } = useAuth() // destructure the login function from our imported useAuth
 
@@ -38,9 +39,12 @@ function Login() {
         login(data.token) // calling the login function from context to update the auth state
         navigate('/')
       } else {
+        const data = await response.json()
+        setError(data.message)
         console.error('Login failed')
       }
     } catch (error) {
+      setError('An unexpected error occurred. Please try again later.')
       console.error('An error occurred:', error)
     }
   }
@@ -70,6 +74,7 @@ function Login() {
         </Form.Group>
         <br />
         <Button variant="primary" type="submit">Submit</Button>
+        {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
       </Form>
     </div>
   );
