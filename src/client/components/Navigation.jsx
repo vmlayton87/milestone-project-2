@@ -1,12 +1,18 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import temp_logo from '../assets/travlr.png'
 import LogoutButton from './LogoutButton';
 import { useAuth } from './AuthContext';
 
 const Navigation = () => {
+
+    const navCollapStyle = {
+      backgroundColor: '#f8f9fa',
+      margin: '0',
+      width: '100%'
+    }
 
   const { isAuthenticated, logout } = useAuth()
 
@@ -18,7 +24,7 @@ const Navigation = () => {
                 <img src={temp_logo} alt='logo' style={{height:'50px', width:'100px'}}/>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
+              <Navbar.Collapse id="basic-navbar-nav" style={navCollapStyle}>
                 <Nav className="me-auto">
                   <Nav.Link href="/">Home</Nav.Link>
                   {/* <NavDropdown title="Inspirations" id="basic-nav-dropdown">
@@ -32,7 +38,9 @@ const Navigation = () => {
                     Category all
                     </NavDropdown.Item>
                   </NavDropdown> */}
-                  <Nav.Link href="/make_my_escapes">Make My Escapes</Nav.Link>
+                  <Nav.Link href="/escapes">Browse Escapes</Nav.Link>  
+                  <Nav.Link href="/my_escapes">View My Escapes</Nav.Link> 
+                  <Nav.Link href="/my_new_escapes">Make My Escapes</Nav.Link> 
                   <Nav.Link href="/view_my_escapes">View My Escapes</Nav.Link> 
                   {isAuthenticated ? (
                     <LogoutButton /> // Render the LogoutButton if the user is logged in

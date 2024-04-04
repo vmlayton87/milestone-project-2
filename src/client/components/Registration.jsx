@@ -8,6 +8,7 @@ function Register() {
     email: '',
     password: ''
   });
+  const [error, setError] = useState('')
   const navigate = useNavigate();
 
   const handleInput = (event) => {
@@ -29,19 +30,17 @@ function Register() {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json(); // Get response data to access the message
       if (!response.ok) {
-        const errorDetails = await response.json();
-        throw new Error(errorDetails.message || 'Failed to register.');
+        throw new Error(data.message || 'Failed to register.');
       }
 
-      const data = await response.json();
-      console.log('Registration successful', data);
-      
-      localStorage.setItem('token', data.token);
-
-      navigate('/');
+      console.log('Registration successful', data)
+      localStorage.setItem('token', data.token)
+      navigate('/')
     } catch (error) {
-      console.error('Registration failed:', error);
+      console.error('Registration failed:', error.message)
+      setError(error.message) // Update the error state with the received error message
     }
   };
 
@@ -72,6 +71,7 @@ function Register() {
         </Form.Group>
         <br />
         <Button variant="primary" type="submit">Register</Button>
+        {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
       </Form>
     </div>
   );
