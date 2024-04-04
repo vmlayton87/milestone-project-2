@@ -5,8 +5,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import 'dotenv/config.js';
 
-// This controller is for handling the login and assigning tokens.
-// Login issue appears to be inconsistency between the stored hash and the received password.
 
 // User login route
 router.post("/login", async (req, res) => {
