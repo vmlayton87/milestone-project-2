@@ -58,7 +58,7 @@ router.post("/register", async (req, res) => {
 
     user = new User({ email, password });
 
-    await user.save(); // This might throw a validation error if password doesn't meet criteria
+    await user.save();
 
     // generate JWT token to log user in immediately after registration
     const token = jwt.sign({ userId: user._id.toString() }, process.env.JWT_SECRET, { expiresIn: '1h' });
@@ -68,7 +68,6 @@ router.post("/register", async (req, res) => {
     console.error(err);
     // Check if this is a validation error
     if (err.name === 'ValidationError') {
-      // You could further refine this to return all validation errors or just the first one
       const messages = Object.values(err.errors).map(val => val.message);
       return res.status(400).json({ message: messages.join(', ') }); // Join all error messages
     }
