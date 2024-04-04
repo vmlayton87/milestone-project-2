@@ -5,19 +5,19 @@ import axios from "axios";
 
 function newEscape() {
   const [formData, setFormData] = useState({
-    destination: null,
-    startDate: null,
-    endDate: null,
-    vibe: null
+    destination: '',
+    startDate: '',
+    endDate: '',
+    vibe: ''
   })
 
-  // const handleInput = (event) => {
-  //   const { name, value } = event.target;
-  //   setFormData({
-  //     ...formData,
-  //     [name]: value
-  //   });
-  // };
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
 
   const handleDate = (e) => {
     const { name, value } = e.target;
@@ -32,21 +32,21 @@ function newEscape() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // submit to server here
-    axios.post(`/itinerary/new`, {destination, startDate, endDate, vibe})
+    axios.post(`/itinerary/new`, formData)
     
   };
 
   return (
     <div className="Create">
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="destinationName">
+        <Form.Group controlId="destination">
         <Form.Label>Destination</Form.Label>
           <Form.Control
             type="text"
             name="destination"
             value={formData.destination}
-            // onInput={handleInput}
-            onChange= {e=>setFormData({destination:e.target.value, startDate, endDate ,vibe})}
+            onChange={handleInput}
+            // onChange= {e=>setFormData({destination:e.target.value, startDate, endDate ,vibe})}
             
           />
         </Form.Group>
@@ -62,8 +62,8 @@ function newEscape() {
             type="date"
             name="startDate"
             value={formData.startDate}
-            onInput={handleDate}
-            onChange= {e=>setFormData({destination, startDate: e.target.value, endDate ,vibe})}
+            onChange={handleDate}
+            // onChange= {e=>setFormData({destination, startDate: e.target.value, endDate ,vibe})}
           />
         </Form.Group>
         <br />
@@ -73,20 +73,24 @@ function newEscape() {
             type="date"
             name="endDate"
             value={formData.endDate}
-            onInput={handleDate}
-            onChange= {e=>setFormData({destination, startDate, endDate: e.target.value ,vibe})}
+            onChange={handleDate}
+            // onChange= {e=>setFormData({destination, startDate, endDate: e.target.value ,vibe})}
           />
         </Form.Group>
         <br />
-        <Form.Group controlId="endDate">
+        <Form.Group controlId="vibe">
         <Form.Label>Vibe</Form.Label>
-          <Form.Select aria-label="Select a vibe"
-          onChange= {e=>setFormData({destination, startDate, endDate ,vibe: e.target.value})}
-          value={formData.vibe}>
-            <option>Select one...</option>
-            <option value="1">First Option</option>
-            <option value="2">Second Option</option>
-            <option value="3">Third Option</option>
+          <Form.Select aria-label="Select a vibe" 
+          onChange={handleInput}
+          // onChange= {e=>setFormData({destination, startDate, endDate ,vibe: e.target.value})}
+          // value={formData.vibe}
+          name="vibe"
+          >
+            <option defaultValue>Select one...</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Romantic">Romantic</option>
+            <option value="Relaxing">Relaxing</option>
+            <option value="Family-friendly">Family-friendly</option>
           </Form.Select>
         </Form.Group>
         <br />

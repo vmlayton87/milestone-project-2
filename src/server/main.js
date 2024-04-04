@@ -11,14 +11,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 connectDB()
 
-
-
-
-app.get("/hello", (req, res) => {
-  res.send("Hello Vite + React!");
-});
-
+// itinerary controller for itinerary paths
 app.use("/itinerary", itineraryController)
+
+//auth controller for login paths
 app.use(authController)
 
 
