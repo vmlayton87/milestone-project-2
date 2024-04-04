@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ function Login() {
     password: ''
   })
   const navigate = useNavigate()
+  const { login } = useAuth() // destructure the login function from our imported useAuth
 
   const handleInput = (event) => {
     const { name, value } = event.currentTarget;
@@ -33,7 +35,7 @@ function Login() {
       if (response.ok) {
         const data = await response.json()
         console.log('Login successful', data)
-        localStorage.setItem('token', data.token) 
+        login(data.token) // calling the login function from context to update the auth state
         navigate('/')
       } else {
         console.error('Login failed')
