@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   })
+  const navigate = useNavigate()
 
   const handleInput = (event) => {
     const { name, value } = event.currentTarget;
@@ -31,7 +33,8 @@ function Login() {
       if (response.ok) {
         const data = await response.json()
         console.log('Login successful', data)
-        // May want to add further processing, like saving the token or redirecting the user
+        localStorage.setItem('token', data.token) 
+        navigate('/')
       } else {
         console.error('Login failed')
       }
