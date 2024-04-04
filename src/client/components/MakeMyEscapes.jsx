@@ -29,12 +29,15 @@ function newEscape() {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // submit to server here
-    axios.post(`/itinerary/new`, formData)
-    
-  };
+    try {
+      await axios.post(`/itinerary/new`, formData)
+    }
+    catch {
+    res.status(404).send("Unable to create new itinerary.") // will look up a better status code.
+  }};
 
   return (
     <div className="Create">
