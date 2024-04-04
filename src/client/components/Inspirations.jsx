@@ -59,7 +59,7 @@ const BrowseEscapes = () => {
                <Card style={cardStyle}>
                  <Card.Img variant="top" src="https://placehold.co/10x10" />
                  <Card.Body>
-                   <Card.Title><a href=''>{itinerary.destination}</a></Card.Title>
+                   <Card.Title><a href={`/escapes/${itinerary._id}`}>{itinerary.destination}</a></Card.Title>
                    <Card.Text>
                      Description data goes here
                    </Card.Text>

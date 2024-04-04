@@ -8,6 +8,7 @@ import BrowseEscapes from './components/Inspirations';
 import MakeMyEscapes from './components/MakeMyEscapes';
 import ViewMyEscapes from './components/ViewMyEscapes';
 import EscapeUpdate from './components/EscapeUpdate';
+import EscapeDetails from './components/EscapeDetails';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
             <Route path="/inspiration/category_3" element={<Inspirations />} />
             <Route path="/inspiration/category_all" element={<Inspirations />} /> */}
             <Route path="/escapes" element={<BrowseEscapes />} />
+            <Route path="/escapes/:id" element={<EscapeDetails />} />
             <Route path="/escapes/:id/update" element={<EscapeUpdate />} />
             <Route path="/my_escapes" element={<ViewMyEscapes />} />
             <Route path="/my_new_escapes" element={<MakeMyEscapes />} />
