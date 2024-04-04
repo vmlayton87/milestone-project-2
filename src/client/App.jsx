@@ -9,11 +9,15 @@ import MakeMyEscapes from './components/MakeMyEscapes';
 import ViewMyEscapes from './components/ViewMyEscapes';
 import EscapeUpdate from './components/EscapeUpdate';
 import EscapeDetails from './components/EscapeDetails';
+import Login from "./components/Login";
+import Register from "./components/Registration";
+import { AuthProvider } from "./components/AuthContext";
 
 function App() {
 
   return (
     <div className="App">
+      <AuthProvider>
       <Router>
         <Navigation/>
           <Routes>
@@ -28,9 +32,13 @@ function App() {
             <Route path="/my_escapes" element={<ViewMyEscapes />} />
             <Route path="/my_new_escapes" element={<MakeMyEscapes />} />
             {/* <Route path="/view_my_escapes" element={<ViewMyEscapes />} /> */}
+            <Route path="/view_my_escapes" element={<ViewMyEscapes />} />
+            <Route path="/login" element={<Login />} />
+            <Route path ="/register" element={<Register />} />
           </Routes>
         <Footer />
       </Router>
+      </AuthProvider>
     </div>
   );
 }

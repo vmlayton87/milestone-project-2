@@ -1,7 +1,7 @@
 import express from "express"
 import ViteExpress from "vite-express"
 import connectDB from "./config/database.js"
-import authController from "./controllers/authController.js"
+import authController from "./controllers/auth_controller.js"
 import itineraryController from "./controllers/itinerary_controller.js"
 
 
@@ -19,7 +19,7 @@ app.get("/hello", (req, res) => {
 });
 
 app.use("/itinerary", itineraryController)
-app.use("auth", authController)
+app.use(authController)
 
 
 ViteExpress.listen(app, 3000, () =>

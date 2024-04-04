@@ -3,6 +3,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import temp_logo from '../assets/travlr.png'
+import LogoutButton from './LogoutButton';
+import { useAuth } from './AuthContext';
 
 const Navigation = () => {
 
@@ -11,6 +13,9 @@ const Navigation = () => {
       margin: '0',
       width: '100%'
     }
+
+  const { isAuthenticated, logout } = useAuth()
+
     return (
         <div>
           <Navbar expand="lg" className="bg-body-tertiary" fixed='top'style={{height:'10vh'}}>
@@ -36,7 +41,12 @@ const Navigation = () => {
                   <Nav.Link href="/escapes">Browse Escapes</Nav.Link>  
                   <Nav.Link href="/my_escapes">View My Escapes</Nav.Link> 
                   <Nav.Link href="/my_new_escapes">Make My Escapes</Nav.Link> 
-                                 
+                  <Nav.Link href="/view_my_escapes">View My Escapes</Nav.Link> 
+                  {isAuthenticated ? (
+                    <LogoutButton /> // Render the LogoutButton if the user is logged in
+                  ) : (
+                    <Nav.Link href="/login">Login</Nav.Link> // Otherwise, show the login link
+                  )}             
                 </Nav>
               </Navbar.Collapse>
             </Container>

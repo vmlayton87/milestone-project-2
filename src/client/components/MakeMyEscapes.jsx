@@ -11,7 +11,7 @@ function newEscape() {
   })
 
   const handleInput = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.currentTarget;   
     setFormData({
       ...formData,
       [name]: value
@@ -86,7 +86,6 @@ function newEscape() {
       </Form>
     </div>
   );
-
 }
 
 export default newEscape;
