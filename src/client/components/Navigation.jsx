@@ -3,8 +3,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 import temp_logo from '../assets/travlr.png'
+import LogoutButton from './LogoutButton';
 
 const Navigation = () => {
+
+  const isLoggedIn = localStorage.getItem('token') // checking to see if user is logged in. This will change whether the log button is login or logout.
+
     return (
         <div>
           <Navbar expand="lg" className="bg-body-tertiary" fixed='top'style={{height:'10vh'}}>
@@ -28,7 +32,12 @@ const Navigation = () => {
                     </NavDropdown.Item>
                   </NavDropdown> */}
                   <Nav.Link href="/make_my_escapes">Make My Escapes</Nav.Link>
-                  <Nav.Link href="/view_my_escapes">View My Escapes</Nav.Link>                 
+                  <Nav.Link href="/view_my_escapes">View My Escapes</Nav.Link> 
+                  {isLoggedIn ? (
+                    <LogoutButton /> // Render the LogoutButton if the user is logged in
+                  ) : (
+                    <Nav.Link href="/login">Login</Nav.Link> // Otherwise, show the login link
+                  )}             
                 </Nav>
               </Navbar.Collapse>
             </Container>

@@ -94,7 +94,6 @@ function newEscape() {
       </Form>
     </div>
   );
-
 }
 
 export default newEscape;
