@@ -41,7 +41,6 @@ const Navigation = () => {
                   <Nav.Link href="/escapes">Browse Escapes</Nav.Link>  
                   <Nav.Link href="/my_escapes">View My Escapes</Nav.Link> 
                   <Nav.Link href="/my_new_escapes">Make My Escapes</Nav.Link> 
-                  <Nav.Link href="/view_my_escapes">View My Escapes</Nav.Link> 
                   {isAuthenticated ? (
                     <LogoutButton /> // Render the LogoutButton if the user is logged in
                   ) : (
