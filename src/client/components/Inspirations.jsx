@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 
-const Inspirations = () => {
+const BrowseEscapes = () => {
 
   const [ itineraryData, setItineraryData ]= useState([]);
   const [modalShow, setModalShow] = useState(false);
@@ -69,7 +69,7 @@ const Inspirations = () => {
                    <ListGroup.Item>{`${new Date(itinerary.startDate).getFullYear()}-${new Date(itinerary.startDate).getMonth() + 1}-${new Date(itinerary.startDate).getDate()} ~ ${new Date(itinerary.endDate).getFullYear()}-${new Date(itinerary.endDate).getMonth() + 1}-${new Date(itinerary.endDate).getDate()}`}</ListGroup.Item>
                  </ListGroup>
                  <Card.Body>
-                   <Button variant="info" style={{margin:'5px'}}>Update</Button>
+                   <Button variant="info" style={{margin:'5px'}} href={`/escapes/${itinerary._id}/update`}>Update</Button>
                    <Button variant="danger" style={{margin:'5px'}} onClick= {()=> handleDelete(itinerary)}>Delete</Button>
                  </Card.Body>
                </Card>
@@ -123,4 +123,4 @@ const Inspirations = () => {
     );
 }
 
-export default Inspirations;
+export default BrowseEscapes;
