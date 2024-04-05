@@ -21,7 +21,8 @@ const ViewMyEscapes = () => {
       
         setItineraryData(data);
       } catch (error) {
-        setError(error.message);
+        console.log(error)
+        res.send(error)
       }
     }
     fetchItineraryData();

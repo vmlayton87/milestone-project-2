@@ -7,7 +7,7 @@ const verifyToken = (req, res, next) => {
   if (authHeader && authHeader.startsWith('Bearer ')) { // checks if the "authorization" header exists and if it starts with "Bearer "
     const token = authHeader.split(' ')[1]; // if conditions are met, it splits the header string by spaces and takes the second part.
 
-    jwt.verify(token, secretKey, (err, decoded) => { // the parameters in this callback function are returning an error if an error occurs during verification, and the decoded payload of the token if it is successful.
+    jwt.verify(token, secretKey(), (err, decoded) => { // the parameters in this callback function are returning an error if an error occurs during verification, and the decoded payload of the token if it is successful.
       if (err) {
         return res.status(403).json({ message: "Token is invalid or expired." });
       }
