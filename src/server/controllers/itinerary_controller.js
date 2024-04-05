@@ -22,7 +22,7 @@ itinerary.get ("/", (req, res)=>{
 
 
   // get itinerary by id
-  itinerary.get("/:id", (req,res)=>{
+  itinerary.get("/:id", verifyToken, (req,res)=>{
     
     Itinerary.findById(req.params.id)
     
