@@ -4,7 +4,8 @@ import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import 'dotenv/config.js';
-
+import secretKey from "../config/key_config.js"
+-
 
 // User login route
 router.post("/login", async (req, res) => {
@@ -34,7 +35,7 @@ router.post("/login", async (req, res) => {
     // Generate JWT
     const token = jwt.sign(
       { userId: user._id.toString() },
-      process.env.JWT_SECRET,
+      secretKey,
       { expiresIn: '1h' }
     );
 
@@ -61,7 +62,7 @@ router.post("/register", async (req, res) => {
     await user.save();
 
     // generate JWT token to log user in immediately after registration
-    const token = jwt.sign({ userId: user._id.toString() }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id.toString() }, secretKey, { expiresIn: '1h' });
 
     res.status(201).json({ message: "User created successfully", token });
   } catch (err) {

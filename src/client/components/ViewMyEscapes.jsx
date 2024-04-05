@@ -17,7 +17,7 @@ const ViewMyEscapes = () => {
     
     const fetchItineraryData = async () => {
       try {
-        const {data} = await axios.get('/itinerary')
+        const {data} = await axios.get('/itinerary/user')
       
         setItineraryData(data);
       } catch (error) {
@@ -42,7 +42,7 @@ const ViewMyEscapes = () => {
 
     const renderItineraries = () => {
       if (itineraryData.length === 0) {
-        return <p>Loading...</p>; 
+        return <p>Loading... Please make sure you are logged in.</p>; 
       }
       return itineraryData.map((itinerary)=>{
 
