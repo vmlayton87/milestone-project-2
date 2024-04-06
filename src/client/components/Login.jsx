@@ -75,6 +75,9 @@ function Login() {
         <br />
         <Button variant="primary" type="submit">Submit</Button>
         {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
+        <div style={{paddingTop:'25px'}}>
+        Haven't registered yet? You can <a href="/Register">register here.</a>
+      </div>
       </Form>
     </div>
   );
