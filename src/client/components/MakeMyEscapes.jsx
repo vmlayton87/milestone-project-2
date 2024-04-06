@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
 
+
 function newEscape() {
   const [formData, setFormData] = useState({
     destination: '',
@@ -29,15 +30,35 @@ function newEscape() {
     });
   };
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   // submit to server here
+    
+  //   try {
+  //     await axios.post(`/itinerary/new`, formData)
+  //   } catch (error) {console.log(error)}
+  //   }
+
+  // from chatgpt to handle authentication of user
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // submit to server here
+    
+    // Get JWT token from local storage or other storage mechanism
+    const token = localStorage.getItem('token');
+    console.log('token',token)
+    // Set JWT token in request headers
+    const headers = {
+        "Authorization": `Bearer ${token}`
+    };
+
     try {
-      await axios.post(`/itinerary/new`, formData)
+        // Make POST request with form data and JWT token included in headers
+        await axios.post('/itinerary/new', formData, {headers:headers} );
+    } catch (error) {
+        console.error('Error creating itinerary:', error);
     }
-    catch {
-    res.status(404).send("Unable to create new itinerary.") // will look up a better status code.
-  }};
+};
+
 
   return (
     <div className="Create">

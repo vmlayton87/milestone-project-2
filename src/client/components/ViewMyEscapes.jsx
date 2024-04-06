@@ -13,19 +13,13 @@ const ViewMyEscapes = () => {
   const [modalShow, setModalShow] = useState(false);
   const [selectedItinerary, setSelectedItinerary] = useState(null);
 
-  useEffect(() => {
+ useEffect(() => {
     
-    const fetchItineraryData = async () => {
-      try {
-        const {data} = await axios.get('/itinerary/user')
-      
-        setItineraryData(data);
-      } catch (error) {
-        console.log(error)
-        res.send(error)
-      }
+    const fetchData = async () => {
+     const{data} = await axios.get('/itinerary')
+     setItineraryData(data)
     }
-    fetchItineraryData();
+    fetchData();
 }, []);
     
     const confirmDelete = async (itineraryId) => {
