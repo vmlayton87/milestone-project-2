@@ -13,7 +13,6 @@ const BrowseEscapes = () => {
     const fetchData = async () => {
      const{data} = await axios.get('/itinerary')
      setItineraryData(data)
-      
     }
     fetchData();
 }, []);
