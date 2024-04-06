@@ -46,7 +46,6 @@ function Register() {
 
   return (
     <div className="Create">
-      <h2>Register</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="registerEmail">
           <Form.Label>Email Address</Form.Label>
