@@ -36,34 +36,6 @@ const ViewMyEscapes = () => {
           console.error(error);
         }
     }    
-//  useEffect(() => {
-//   const fetchData = async () => {
-//     try {
-//       const{data} = await axios.get('/itinerary')
-//       setItineraryData(data)
-//     } catch (error) {
-//       console.error(error)
-//     }}
-//     fetchData();
-// }, []);
-    
-//   const confirmDelete = async (itineraryId) => {
-//     try {
-//       await axios.delete(`itinerary/${itineraryId}`)
-//         console.log(`Deleted itinerary with ID ${itineraryId}`);
-//         const response = await axios.get('/itinerary')
-//         const resData = response.data
-//         console.log( "data after delete and get request" ,resData)
-//         setItineraryData(resData);
-//         setModalShow(false);
-//     } catch (error){
-//         console.error(error);
-//       }
-//   }    
-
- 
-
-
   
   const renderItineraries = () => {
     if (itineraryData.length === 0) {
