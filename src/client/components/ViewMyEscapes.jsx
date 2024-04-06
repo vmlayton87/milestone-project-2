@@ -39,7 +39,7 @@ const ViewMyEscapes = () => {
   
   const renderItineraries = () => {
     if (itineraryData.length === 0) {
-      return <p>Loading... Please make sure you are logged in.</p>; 
+      return <p>Loading... </p>; 
     }
     return itineraryData.map((itinerary)=>{
 

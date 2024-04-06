@@ -2,9 +2,15 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
+import { useNavigate} from 'react-router-dom';
+// import Activities from './Activities';
 
 
 function newEscape() {
+  
+
+  const navigate = useNavigate()
+  
   const [formData, setFormData] = useState({
     destination: '',
     startDate: '',
@@ -29,15 +35,19 @@ function newEscape() {
       [name]: formattedDate,
     });
   };
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     // submit to server here
     
     try {
-      await axios.post(`/itinerary/new`, formData)
+      const {data} = await axios.post(`/itinerary/new`, formData)
+      console.log(data)
+      navigate(`/my_new_escapes/${data._id}/activities`)
     } catch (error) {console.log(error)}
-    }
+    
+  }
 
   // from chatgpt to handle authentication of user
 //   const handleSubmit = async (event) => {

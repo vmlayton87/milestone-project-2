@@ -12,6 +12,7 @@ import EscapeDetails from './components/EscapeDetails';
 import Login from "./components/Login";
 import Register from "./components/Registration";
 import { AuthProvider } from "./components/AuthContext";
+import Activities from "./components/Activities";
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
             <Route path="/escapes/:id/update" element={<EscapeUpdate />} />
             <Route path="/my_escapes" element={<ViewMyEscapes />} />
             <Route path="/my_new_escapes" element={<MakeMyEscapes />} />
-            {/* <Route path="/view_my_escapes" element={<ViewMyEscapes />} /> */}
+            <Route path="/my_new_escapes/:id/activities" element={<Activities />} />
             <Route path="/login" element={<Login />} />
             <Route path ="/register" element={<Register />} />
           </Routes>
