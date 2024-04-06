@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import temp_logo from '../assets/travlr.png'
+import temp_logo from '../assets/paper-airplane.png'
 import LogoutButton from './LogoutButton';
 import { useAuth } from './AuthContext';
 
@@ -21,7 +21,7 @@ const Navigation = () => {
           <Navbar expand="lg" className="bg-body-tertiary" fixed='top'style={{height:'10vh'}}>
             <Container>
               <Navbar.Brand href="/">
-                <img src={temp_logo} alt='logo' style={{height:'50px', width:'100px'}}/>
+                <img src={temp_logo} alt='logo' className="navbar-logo" style={{height:'85px', width:'170px'}}/>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav" style={navCollapStyle}>
