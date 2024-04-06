@@ -8,7 +8,7 @@ const itinerarySchema = new mongoose.Schema({
     days: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Day' }],
     vibe: {
         type: String,
-        enum: ['adventure', 'romantic', 'relaxing', 'family-friendly'],
+        enum: ['Adventure', 'Romantic', 'Relaxing', 'Family-friendly'],
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

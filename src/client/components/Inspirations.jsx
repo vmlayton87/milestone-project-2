@@ -9,31 +9,15 @@ const BrowseEscapes = () => {
   const [ itineraryData, setItineraryData ]= useState([]);
 
   useEffect(() => {
-    const API_URL = `http://localhost:3000/itinerary/`
+    
     const fetchData = async () => {
-      try {
-        const response = await fetch(API_URL);
-        const resData = await response.json();
-        setItineraryData(resData);
-      } catch (e) {
-        console.log(e);
-      }
+     const{data} = await axios.get('/itinerary')
+     setItineraryData(data)
     }
     fetchData();
 }, []);
     
-    const confirmDelete = async (itineraryId) => {
-      try {
-        await axios.delete(`http://localhost:3000/itinerary/${itineraryId}`)
-          console.log(`Deleted itinerary with ID ${itineraryId}`);
-          const response = await fetch('http://localhost:3000/itinerary/');
-          const resData = await response.json();
-          setItineraryData(resData);
-          setModalShow(false);
-      } catch (error){
-          console.error(error);
-        }
-    }    
+  
 
     const renderItineraries = () => {
       if (itineraryData.length === 0) {
