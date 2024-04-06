@@ -30,34 +30,34 @@ function newEscape() {
     });
   };
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   // submit to server here
-    
-  //   try {
-  //     await axios.post(`/itinerary/new`, formData)
-  //   } catch (error) {console.log(error)}
-  //   }
-
-  // from chatgpt to handle authentication of user
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // submit to server here
     
-    // Get JWT token from local storage or other storage mechanism
-    const token = localStorage.getItem('token');
-    console.log('token',token)
-    // Set JWT token in request headers
-    const headers = {
-        "Authorization": `Bearer ${token}`
-    };
-
     try {
-        // Make POST request with form data and JWT token included in headers
-        await axios.post('/itinerary/new', formData, {headers:headers} );
-    } catch (error) {
-        console.error('Error creating itinerary:', error);
+      await axios.post(`/itinerary/new`, formData)
+    } catch (error) {console.log(error)}
     }
-};
+
+  // from chatgpt to handle authentication of user
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
+    
+//     // Get JWT token from local storage or other storage mechanism
+//     const token = localStorage.getItem('token');
+//     console.log('token',token)
+//     // Set JWT token in request headers
+//     const headers = {
+//         "Authorization": `Bearer ${token}`
+//     };
+
+//     try {
+//         // Make POST request with form data and JWT token included in headers
+//         await axios.post('/itinerary/new', formData, {headers:headers} );
+//     } catch (error) {
+//         console.error('Error creating itinerary:', error);
+//     }
+// };
 
 
   return (

@@ -24,14 +24,15 @@ const EscapeDetails = () => {
 }, [id]);
 
   // use itineraryIdData to retrieve individual data. 
-  const renderItineraryData = ()=>{
+  // using the following function to test. **works**
+  // const renderItineraryData = ()=>{
     
-    return(
-      <div>
-        <p>{itineraryIdData.destination}</p>
-      </div>
-    )
-  }
+  //   return(
+  //     <div>
+  //       <p>{itineraryIdData.destination}</p>
+  //     </div>
+  //   )
+  // }
 
     const divStyle = {
         display:'flex',
@@ -43,7 +44,7 @@ const EscapeDetails = () => {
     return (
       <div style={divStyle}>
         <h4>This is the Escape Details page</h4>
-        {renderItineraryData()}
+        {/* {renderItineraryData()} // used to test that the api call is working. */} 
       </div>
       
     )
