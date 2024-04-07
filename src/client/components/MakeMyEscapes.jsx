@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from "axios";
+import { useNavigate} from 'react-router-dom';
+// import Activities from './Activities';
+
 
 function newEscape() {
+  
+
+  const navigate = useNavigate()
+  
   const [formData, setFormData] = useState({
     destination: '',
     startDate: '',
@@ -11,7 +19,7 @@ function newEscape() {
   })
 
   const handleInput = (event) => {
-    const { name, value } = event.target;   
+    const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value
@@ -27,24 +35,51 @@ function newEscape() {
       [name]: formattedDate,
     });
   };
+  
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // submit to server here
-    console.log(formData);
-  };
+    
+    try {
+      const {data} = await axios.post(`/itinerary/new`, formData)
+      console.log(data)
+      navigate(`/my_new_escapes/${data._id}/activities`)
+    } catch (error) {console.log(error)}
+    
+  }
+
+  // from chatgpt to handle authentication of user
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
+    
+//     // Get JWT token from local storage or other storage mechanism
+//     const token = localStorage.getItem('token');
+//     console.log('token',token)
+//     // Set JWT token in request headers
+//     const headers = {
+//         "Authorization": `Bearer ${token}`
+//     };
+
+//     try {
+//         // Make POST request with form data and JWT token included in headers
+//         await axios.post('/itinerary/new', formData, {headers:headers} );
+//     } catch (error) {
+//         console.error('Error creating itinerary:', error);
+//     }
+// };
+
 
   return (
     <div className="Create">
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="destinationName">
+        <Form.Group controlId="destination">
         <Form.Label>Destination</Form.Label>
           <Form.Control
             type="text"
             name="destination"
             value={formData.destination}
-            onChange={handleInput}
-          />
+            onChange={handleInput} />
         </Form.Group>
         <br />
         <Form.Group controlId="formFileSm" className="mb-3">
@@ -58,8 +93,7 @@ function newEscape() {
             type="date"
             name="startDate"
             value={formData.startDate}
-            onChange={handleDate}
-          />
+            onChange={handleDate} />
         </Form.Group>
         <br />
         <Form.Group controlId="endDate">
@@ -68,18 +102,19 @@ function newEscape() {
             type="date"
             name="endDate"
             value={formData.endDate}
-            onChange={handleDate}
-          />
+            onChange={handleDate} />
         </Form.Group>
         <br />
-        <Form.Group controlId="endDate">
+        <Form.Group controlId="vibe">
         <Form.Label>Vibe</Form.Label>
-          <Form.Select aria-label="Select a vibe">
-            <option>Select one...</option>
-            <option value="relaxing">Relaxing</option>
-            <option value="family-friendly">Family-friendly</option>
-            <option value="romantic">Romantic</option>
-            <option value="adventure">Adventure</option>
+          <Form.Select aria-label="Select a vibe" 
+          onChange={handleInput}
+          name="vibe" >
+            <option defaultValue>Select one...</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Romantic">Romantic</option>
+            <option value="Relaxing">Relaxing</option>
+            <option value="Family-friendly">Family-friendly</option>
           </Form.Select>
         </Form.Group>
         <br />
