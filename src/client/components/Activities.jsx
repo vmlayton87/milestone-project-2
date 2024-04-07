@@ -2,71 +2,96 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
 import { useParams } from 'react-router-dom';
+import axios from "axios";
 
 function Activities() {
+  // to retrieve the id from the url
   let {id}= useParams()
   
   const [ itineraryData, setItineraryData ]= useState([]);
-  const [daysArray, setDaysArray] = useState([])
-  const [error, setError] = useState(null);
+  const [daysData, setDaysData] = useState([])
 
   const fetchData = async (id) => {
-    console.log("inside fetch data function")
-    // debugger
     try {
       const {data} = await axios.get(`/itinerary/${id}`)
       setItineraryData(data)
-      console.log("after setitinerary: ", itineraryData)
+      
     } catch (error) {
-      setError(error.message);
+      console.log(error);
     }
   }
+  // to fetch the itinerary based on id when the id is changed.
   useEffect(() => { 
     fetchData(id);
-}, [id]);
+  }, [id]);
 
-// const renderDates = () => {
-//   let itinerary = itineraryData
-//   //  const dateRange = itinerary.days.map(days=>days.date);
-//     return (
-//       <div className="Create" key={itinerary._id}>
-//         <Card>
-//           <Card.Header>
-//             <Nav variant="tabs" defaultActiveKey="#first">
-//               <Nav.Item>
-//                 <Nav.Link href="#first">
-//                   {itinerary.days.map((date, index) => (
-//                     <span key={index}>{date.toLocaleDateString()}</span>
-//                   ))}
-//                 </Nav.Link>
-//               </Nav.Item>
-//             </Nav>
-//           </Card.Header>
-//           <Card.Body>
-//             <Card.Title>Title</Card.Title>
-//             <Card.Text>
-//               Descriptions of activities
-//             </Card.Text>
-//             <Button variant="primary">Save</Button>
-//           </Card.Body>
-//         </Card>
-//       </div>
-//     )
-//   }
+
+// promise.all waits for all items to be retrieved inside .map function before rendering
+const fetchDates = async () => {
+  try {
+    const tempDayDataArray = await Promise.all(itineraryData.days.map(async (item) => { 
+      const { data } = await axios.get(`/day/${item}`);
+      return data;
+    }));
+    setDaysData(tempDayDataArray);
+  } catch (error) {
+    console.error('Error fetching dates:', error);
+  }
+};
+
+// runs when the itinerary data is updated to ensure data is available for the fetchDates
+useEffect(() => {
+  fetchDates();
+}, [itineraryData]);
+
+// changes the dates to be more readable
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const options = { month: 'long', day: '2-digit', year: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
+};
+const renderDates = () => {
+  
+  let itinerary = itineraryData
+  return ( <Card>
+    <Card.Header>
+      <Nav variant="tabs" defaultActiveKey="#first">
+        
+        {daysData.map((day)=>{
+          return (<Nav.Item><Nav.Link>{formatDate(day.date)}</Nav.Link></Nav.Item>)
+        })}
+         
+      </Nav>
+    </Card.Header>
+    <Card.Body>
+      <Card.Title>Special title treatment</Card.Title>
+      <Card.Text>
+        With supporting text below as a natural lead-in to additional content.
+      </Card.Text>
+      <Button variant="primary">Save</Button>
+    </Card.Body>
+  </Card>)
+  }
 
 
 const divStyle = {
   display:'flex',
   flexWrap: 'wrap',
   margin:'5%',
-  paddingBottom: '5%'
+  paddingBottom: '5%',
+  justifyContent: 'center',
+  alignItems: 'center'
 }
 
 return (
   <div style={divStyle}>
       <h4>This is the create escape activity details page</h4>
-      {/* {renderDates()} */}
+      {renderDates()}
+      
+      
   </div>
 )
 }
