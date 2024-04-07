@@ -18,6 +18,16 @@ Nav {
   flex-wrap: nowrap;
 }
 
+.container {
+  height: 100%;
+}
+
+#basic-navbar-nav{
+  display: block;
+  overflow: hidden;
+  height: 90%;
+}
+
 .nav-link {
   margin-left: 1em;
   margin-right: 1em;
