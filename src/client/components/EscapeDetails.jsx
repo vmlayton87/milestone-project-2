@@ -65,7 +65,7 @@ const EscapeDetails = () => {
       <div>
       <Card>
         <div style={{width:'100%', padding: '2em', height: '30%', overflow:'hidden', display:'flex', alignItems:'center'}}>
-          <img src={vibeImage} alt='beautiful_view' style={{ display:'block', width:'100%', margin:'auto'}}/>
+          <img src={vibeImage} alt='beautiful_view' style={{ display:'block', width:'80%', margin:'auto'}}/>
         </div>
         <div>
         <div style={{display:'flex', justifyContent:'center', margin: '1em'}}>
