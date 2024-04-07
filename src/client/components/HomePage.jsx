@@ -6,7 +6,7 @@ function HomePage() {
     <Card className="bg-dark text-white" >
       <Card.Img src={HomePageImage} alt="Card image" />
       <Card.ImgOverlay>
-        <div class='home-text'>
+        <div className='home-text'>
           <Card.Title>Card title</Card.Title>
           <Card.Text>
             This is a wider card with supporting text below as a natural lead-in
