@@ -1,6 +1,6 @@
 import express from "express";
 const day = express.Router();
-import Day from "../models/day";
+import Day from "../models/day.js";
 
 // get all days
 day.get ("/", (req, res)=>{
@@ -17,45 +17,44 @@ day.get ("/", (req, res)=>{
 
 // get day by id
 day.get("/:id", (req,res)=>{
+  Day.findById(req.params.id)
 
-Day.findById(req.params.id)
-
-.then(foundDay => {
-    res.status(200).send(foundDay)
-    })
-    .catch(err=>{
-    console.log(err)
-    res.send(err)})
+  .then(foundDay => {
+      res.status(200).send(foundDay)
+      })
+      .catch(err=>{
+      console.log(err)
+      res.send(err)})
 })
     
 
   // create a new Day
-  day.post("/new", (req,res)=>{
+day.post("/new", (req,res)=>{
 
-    console.log(req.body)
+  console.log(req.body)
 
-Day.create(req.body)
-.then(newDay =>{
-    res.status(201).send(newDay)
-})
-.catch(err=>{
-    console.log(err)
-    res.send(err)
-})
+  Day.create(req.body)
+    .then(newDay =>{
+        res.status(201).send(newDay)
+    })
+    .catch(err=>{
+        console.log(err)
+        res.send(err)
+    })
 })
 
 //update by id
 
 day.put("/:id", (req, res)=>{
-Day.findByIdAndUpdate(req.params.id, req.body, {new:true})
-.then(updatedDay=>{
-    res.status(200).send(updatedDay)
-})
-.catch(err=>{
-    console.log(err)
-    res.send(err)
-})
-})
+  Day.findByIdAndUpdate(req.params.id, req.body, {new:true})
+  .then(updatedDay=>{
+      res.status(200).send(updatedDay)
+  })
+  .catch(err=>{
+      console.log(err)
+      res.send(err)
+  })
+  })
 
   //delete a day *will need to create an "are you sure" check before running this on the client side.
 day.delete("/:id", (req, res)=>{

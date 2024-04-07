@@ -1,54 +1,74 @@
+
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
+import { useParams } from 'react-router-dom';
 
-function activities() {
+function Activities() {
+  let {id}= useParams()
+  
   const [ itineraryData, setItineraryData ]= useState([]);
+  const [daysArray, setDaysArray] = useState([])
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const API_URL = `http://localhost:3000/itinerary/`
-    const fetchData = async () => {
-      try {
-        const response = await fetch(API_URL);
-        const resData = await response.json();
-        setItineraryData(resData);
-      } catch (error) {
-        setError(error.message);
-      }
+  const fetchData = async (id) => {
+    console.log("inside fetch data function")
+    // debugger
+    try {
+      const {data} = await axios.get(`/itinerary/${id}`)
+      setItineraryData(data)
+      console.log("after setitinerary: ", itineraryData)
+    } catch (error) {
+      setError(error.message);
     }
-    fetchData();
-}, []);
+  }
+  useEffect(() => { 
+    fetchData(id);
+}, [id]);
 
-const renderItineraries = () => {
-  return itineraryData.map((itinerary, itineraryIndex) => {
-   const dateRange = itinerary.days.date;
-    return (
-      <div className="Create" key={itineraryIndex}>
-        <Card>
-          <Card.Header>
-            <Nav variant="tabs" defaultActiveKey="#first">
-              <Nav.Item>
-                <Nav.Link href="#first">
-                  {dateRange.map((date, index) => (
-                    <span key={index}>{date.toLocaleDateString()}</span>
-                  ))}
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Card.Header>
-          <Card.Body>
-            <Card.Title>Title</Card.Title>
-            <Card.Text>
-              Descriptions of activities
-            </Card.Text>
-            <Button variant="primary">Save</Button>
-          </Card.Body>
-        </Card>
-      </div>
-    )
-  })
-}
+// const renderDates = () => {
+//   let itinerary = itineraryData
+//   //  const dateRange = itinerary.days.map(days=>days.date);
+//     return (
+//       <div className="Create" key={itinerary._id}>
+//         <Card>
+//           <Card.Header>
+//             <Nav variant="tabs" defaultActiveKey="#first">
+//               <Nav.Item>
+//                 <Nav.Link href="#first">
+//                   {itinerary.days.map((date, index) => (
+//                     <span key={index}>{date.toLocaleDateString()}</span>
+//                   ))}
+//                 </Nav.Link>
+//               </Nav.Item>
+//             </Nav>
+//           </Card.Header>
+//           <Card.Body>
+//             <Card.Title>Title</Card.Title>
+//             <Card.Text>
+//               Descriptions of activities
+//             </Card.Text>
+//             <Button variant="primary">Save</Button>
+//           </Card.Body>
+//         </Card>
+//       </div>
+//     )
+//   }
+
+
+const divStyle = {
+  display:'flex',
+  flexWrap: 'wrap',
+  margin:'5%',
+  paddingBottom: '5%'
 }
 
-export default activities;
+return (
+  <div style={divStyle}>
+      <h4>This is the create escape activity details page</h4>
+      {/* {renderDates()} */}
+  </div>
+)
+}
+
+export default Activities;

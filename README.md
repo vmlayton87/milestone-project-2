@@ -32,6 +32,7 @@ Users can create an account with Escape Plan and immediately either jump into bu
 - Description: Contains the base level information about your trip, the first leg of the journey for any great adventure.
 - Structure:
   - "destination": The most important part of planning any vacation: figuring out where to go.
+  - "photo": Option to upload either a photo that inspired you to travel here, or add one from your trip.
   - "startDate": The departure date.
   - "endDate": The return date.
   - "days": An array referencing the "Days" collection, automatically generating a number of days based on the start and end dates selected in order to facilitate a more sequential approach to building out your trip.

@@ -300,7 +300,7 @@ const seedItineraries = async () => {
             days: [joshuaTreeDay1._id, joshuaTreeDay2._id, joshuaTreeDay3._id]
         })
 
-        console.log('Itineraries seeded successfully!')
+        console.log('Database seeded successfully!')
     } catch (err) {
         console.error('Error seeding itineraries:', err)
     } finally {
