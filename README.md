@@ -66,6 +66,8 @@ While Escape Plan may have gotten off of the tarmac, more is in the works as we 
   - A high priority for the team is to bring the ability to vote posted itineraries up or down to improve visibility for great experiences, as well as to add comments to highlight what may have been a "can't miss" or an "avoid at all costs" part of the trip.
 - Push to calendar.
   - Once your itinerary is complete, we aim to add the ability to push your itinerary to your personal calendar on your mobile device.
+- Budgeting.
+    - Integrated budgeting that lets you set your budget, then automatically tallies up the cost of each activity so that you can see how the total expense of your current plans stack up next to your spending limit.
 - Flight, hotel, and car rental implementation.
   - We want to do everything we can to make planning your trip a smooth and enjoyable experience, so we have plans to integrate the ability to search flights, hotels, and rental cars all from within the app.
 - Featured experiences.
