@@ -17,7 +17,7 @@ const itinerarySchema = new mongoose.Schema({
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User', // tells Mongoose that the ObjectId references a document in the User collection.
-      required: true
+      required: false
     }
 })
 
