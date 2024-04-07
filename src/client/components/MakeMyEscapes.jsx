@@ -76,9 +76,10 @@ function newEscape() {
         <Form.Label>Vibe</Form.Label>
           <Form.Select aria-label="Select a vibe">
             <option>Select one...</option>
-            <option value="1">First Option</option>
-            <option value="2">Second Option</option>
-            <option value="3">Third Option</option>
+            <option value="relaxing">Relaxing</option>
+            <option value="family-friendly">Family-friendly</option>
+            <option value="romantic">Romantic</option>
+            <option value="adventure">Adventure</option>
           </Form.Select>
         </Form.Group>
         <br />
