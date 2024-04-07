@@ -37,12 +37,22 @@ const ViewMyEscapes = () => {
         }
     }    
   
+  //Different image urls according to vibes
+  const vibeImages = {
+    adventure: 'https://images.pexels.com/photos/1374064/pexels-photo-1374064.jpeg?auto=compress&cs=tinysrgb&w=600',
+    romantic: 'https://images.pexels.com/photos/4352151/pexels-photo-4352151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    relaxing: 'https://images.pexels.com/photos/1154638/pexels-photo-1154638.jpeg?auto=compress&cs=tinysrgb&w=600',
+    'family-friendly': 'https://images.pexels.com/photos/11715394/pexels-photo-11715394.jpeg?auto=compress&cs=tinysrgb&w=600',
+  };
+
   const renderItineraries = () => {
     if (itineraryData.length === 0) {
       return <p>Loading... </p>; 
     }
     return itineraryData.map((itinerary)=>{
-
+      
+      const vibeImage = vibeImages[itinerary.vibe] || 'https://placehold.co/10x10';
+      console.log(vibeImage);
       const cardStyle = {
         width: '30%',
         margin:'1%'
@@ -56,7 +66,7 @@ const ViewMyEscapes = () => {
       return (
           < React.Fragment key={itinerary._id}>
               <Card style={cardStyle}>
-                <Card.Img variant="top" src="https://placehold.co/10x10" />
+                  <Card.Img variant="top" src={vibeImage} style={{height:'500px', width:'auto'}}/>
                 <Card.Body>
                 <Card.Title>
                   <Link to={`/escapes/${itinerary._id}`}>{itinerary.destination}</Link>
