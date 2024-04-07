@@ -1,7 +1,9 @@
 import express from "express";
 const itinerary = express.Router();
 import Itinerary from "../models/itinerary.js"
-import verifyToken from "../middleware/verifyToken.js";
+// import verifyToken from "../middleware/verifyToken.js";
+// import User from "../models/user.js" // may need to use for displaying only a user's info
+
 
 //NEED TEAM INPUT: We need to determine which routes will be protected, aka which routes require a user to be logged in in order to access. All you have to do to implement this protection is add verifyToken into the paramaters. 
 // Ex: router.get ("/itinerary/my-escapes", verifyToken, (req, res) => {
@@ -20,6 +22,7 @@ itinerary.get ("/", (req, res)=>{
     .catch(err=>{console.log(err)})
   })
 
+  
 
   // get itinerary by id
   itinerary.get("/:id", (req,res)=>{
@@ -35,21 +38,20 @@ itinerary.get ("/", (req, res)=>{
     })
     
 
-  // create a new itinerary
-  itinerary.post("/new", (req,res)=>{
 
-    console.log(req.body)
-
+// create a new itinerary
+  itinerary.post("/new", async (req,res)=>{
+    console.log('itinerary post req body', req.body)
     Itinerary.create(req.body)
-    .then(async (newItinerary)=>{
-      await newItinerary.createDaysArray()
+    .then(newItinerary=>{
+      newItinerary.createDaysArray()
       res.status(201).send(newItinerary)
     })
     .catch(err=>{
       console.log(err)
-      res.send(err)
-    })
-  })
+      res.status(500).send("Error creating itinerary")
+    }
+  )})
 
   //update by id
 

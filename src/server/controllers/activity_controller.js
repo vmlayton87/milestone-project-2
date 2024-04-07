@@ -1,6 +1,6 @@
 import express from "express";
 const activity = express.Router();
-import Activity from "../models/activity";
+import Activity from "../models/activity.js";
 
 // get all activities
 activity.get ("/", (req, res)=>{
