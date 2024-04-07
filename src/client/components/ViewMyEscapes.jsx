@@ -45,6 +45,12 @@ const ViewMyEscapes = () => {
     'family-friendly': 'https://images.pexels.com/photos/11715394/pexels-photo-11715394.jpeg?auto=compress&cs=tinysrgb&w=600',
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { month: 'short', day: '2-digit', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  };
+
   const renderItineraries = () => {
     if (itineraryData.length === 0) {
       return <p>Loading... </p>; 
@@ -77,7 +83,7 @@ const ViewMyEscapes = () => {
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                   <ListGroup.Item>Vibe: {itinerary.vibe}</ListGroup.Item>
-                  <ListGroup.Item>{`${new Date(itinerary.startDate).getFullYear()}-${new Date(itinerary.startDate).getMonth() + 1}-${new Date(itinerary.startDate).getDate()} ~ ${new Date(itinerary.endDate).getFullYear()}-${new Date(itinerary.endDate).getMonth() + 1}-${new Date(itinerary.endDate).getDate()}`}</ListGroup.Item>
+                  <ListGroup.Item>{`${formatDate(itinerary.startDate)} ~ ${formatDate(itinerary.endDate)}`}</ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
                   <Button variant="info" style={{margin:'5px'}} href={`/escapes/${itinerary._id}/update`}>Update</Button>

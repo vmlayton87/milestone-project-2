@@ -50,18 +50,20 @@ useEffect(() => {
 // changes the dates to be more readable
 const formatDate = (dateString) => {
   const date = new Date(dateString);
-  const options = { month: 'long', day: '2-digit', year: 'numeric' };
+  const options = { month: 'short', day: '2-digit', year: 'numeric' };
   return date.toLocaleDateString('en-US', options);
 };
 const renderDates = () => {
-  
+  if (daysData.length === 0) {
+    return <div><p>Loading...</p></div>; // Display a loading indicator while data is being fetched
+  }
   let itinerary = itineraryData
-  return ( <Card>
+  return ( <div><Card>
     <Card.Header>
       <Nav variant="tabs" defaultActiveKey="#first">
         
         {daysData.map((day)=>{
-          return (<Nav.Item><Nav.Link>{formatDate(day.date)}</Nav.Link></Nav.Item>)
+          return (<Nav.Item><Nav.Link key={day._id}>{formatDate(day.date)}</Nav.Link></Nav.Item>)
         })}
          
       </Nav>
@@ -73,7 +75,7 @@ const renderDates = () => {
       </Card.Text>
       <Button variant="primary">Save</Button>
     </Card.Body>
-  </Card>)
+  </Card> </div>)
   }
 
 
