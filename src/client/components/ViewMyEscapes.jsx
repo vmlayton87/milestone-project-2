@@ -72,7 +72,9 @@ const ViewMyEscapes = () => {
       return (
           < React.Fragment key={itinerary._id}>
               <Card style={cardStyle}>
-                  <Card.Img variant="top" src={vibeImage} style={{height:'500px', width:'auto'}}/>
+                <div style={{padding:'1em', height: '500px', overflow:'hidden', display:'flex', alignItems:'center'}}>
+                 <Card.Img variant="top" src={vibeImage} />
+                </div>
                 <Card.Body>
                 <Card.Title>
                   <Link to={`/escapes/${itinerary._id}`}>{itinerary.destination}</Link>
