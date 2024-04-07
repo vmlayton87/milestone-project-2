@@ -79,10 +79,7 @@ function newEscape() {
             type="text"
             name="destination"
             value={formData.destination}
-            onChange={handleInput}
-            // onChange= {e=>setFormData({destination:e.target.value, startDate, endDate ,vibe})}
-            
-          />
+            onChange={handleInput} />
         </Form.Group>
         <br />
         <Form.Group controlId="formFileSm" className="mb-3">
@@ -96,9 +93,7 @@ function newEscape() {
             type="date"
             name="startDate"
             value={formData.startDate}
-            onChange={handleDate}
-            // onChange= {e=>setFormData({destination, startDate: e.target.value, endDate ,vibe})}
-          />
+            onChange={handleDate} />
         </Form.Group>
         <br />
         <Form.Group controlId="endDate">
@@ -107,19 +102,14 @@ function newEscape() {
             type="date"
             name="endDate"
             value={formData.endDate}
-            onChange={handleDate}
-            // onChange= {e=>setFormData({destination, startDate, endDate: e.target.value ,vibe})}
-          />
+            onChange={handleDate} />
         </Form.Group>
         <br />
         <Form.Group controlId="vibe">
         <Form.Label>Vibe</Form.Label>
           <Form.Select aria-label="Select a vibe" 
           onChange={handleInput}
-          // onChange= {e=>setFormData({destination, startDate, endDate ,vibe: e.target.value})}
-          // value={formData.vibe}
-          name="vibe"
-          >
+          name="vibe" >
             <option defaultValue>Select one...</option>
             <option value="Adventure">Adventure</option>
             <option value="Romantic">Romantic</option>
