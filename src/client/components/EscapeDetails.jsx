@@ -23,6 +23,15 @@ const EscapeDetails = () => {
     fetchItinerariesData(id);  
   }, [id]);
 
+
+  //Different image urls according to vibes
+  const vibeImages = {
+    adventure: 'https://images.pexels.com/photos/1374064/pexels-photo-1374064.jpeg?auto=compress&cs=tinysrgb&w=600',
+    romantic: 'https://images.pexels.com/photos/4352151/pexels-photo-4352151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    relaxing: 'https://images.pexels.com/photos/1154638/pexels-photo-1154638.jpeg?auto=compress&cs=tinysrgb&w=600',
+    'family-friendly': 'https://images.pexels.com/photos/11715394/pexels-photo-11715394.jpeg?auto=compress&cs=tinysrgb&w=600',
+  };
+
   const renderEscapeDetails = () => {
     if (itineraryData.length === 0) {
       return (
@@ -32,6 +41,8 @@ const EscapeDetails = () => {
       ); 
     }
     
+    const vibeImage = vibeImages[itineraryData.vibe] || 'https://placehold.co/10x10';
+
     const handleActivities = () => {
       return (
         <div>
@@ -54,7 +65,7 @@ const EscapeDetails = () => {
       <div>
       <Card>
         <div>
-          <img src='https://placehold.co/600x400' alt='beautiful_view' style={{margin:'1em'}}/>
+          <img src={vibeImage} alt='beautiful_view' style={{margin:'1em'}}/>
         </div>
         <div>
         <div style={{display:'flex', justifyContent:'center', margin: '1em'}}>
