@@ -23,9 +23,10 @@ const seedItineraries = async () => {
 
         const seagroveItinerary = await Itinerary.create({
             destination: "Seagrove Beach, Florida",
+            photo: "../../client/assets/seagrove-matthew-brodeur-unsplash.jpg",
             startDate: new Date(2024, 4, 24),
             endDate: new Date(2024, 4, 27),
-            vibe: "relaxing",
+            vibe: "Relaxing",
             days: [seagroveDay._id]
         })
         
@@ -60,7 +61,7 @@ const seedItineraries = async () => {
             destination: "Glacier National Park, Montana",
             startDate: new Date(2024, 7, 8),
             endDate: new Date(2024, 7, 12),
-            vibe: "adventure",
+            vibe: "Adventure",
             days: [day1GlacierPark._id, day2GlacierPark._id]
         })
 
@@ -95,7 +96,7 @@ const seedItineraries = async () => {
             destination: "Breckenridge, Colorado",
             startDate: new Date(2024, 11, 10),
             endDate: new Date(2024, 11, 16),
-            vibe: "family-friendly",
+            vibe: "Family-friendly",
             days: [breckenridgeDay1._id, breckenridgeDay2._id]
         })
 
@@ -129,7 +130,7 @@ const seedItineraries = async () => {
             destination: "Napa Valley, California",
             startDate: new Date(2024, 8, 3),
             endDate: new Date(2024, 8, 8),
-            vibe: "romantic",
+            vibe: "Romantic",
             days: [napaValleyDay1._id, napaValleyDay2._id]
         })
 
@@ -183,7 +184,7 @@ const seedItineraries = async () => {
             destination: "Charleston, SC",
             startDate: new Date(2024, 9, 16),
             endDate: new Date(2024, 9, 21),
-            vibe: "romantic",
+            vibe: "Romantic",
             days: [charlestonDay1._id, charlestonDay2._id]
         })
 
@@ -230,7 +231,7 @@ const seedItineraries = async () => {
             destination: "Maui, Hawaii",
             startDate: new Date(2024, 5, 1),
             endDate: new Date(2024, 5, 9),
-            vibe: "relaxing",
+            vibe: "Relaxing",
             days: [mauiDay1._id, mauiDay2._id]
         })
 
@@ -296,11 +297,11 @@ const seedItineraries = async () => {
             destination: "Joshua Tree, California",
             startDate: new Date(2024, 8, 20),
             endDate: new Date(2024, 8, 26),
-            vibe: "adventure",
+            vibe: "Adventure",
             days: [joshuaTreeDay1._id, joshuaTreeDay2._id, joshuaTreeDay3._id]
         })
 
-        console.log('Itineraries seeded successfully!')
+        console.log('Database seeded successfully!')
     } catch (err) {
         console.error('Error seeding itineraries:', err)
     } finally {
