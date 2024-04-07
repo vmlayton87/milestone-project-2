@@ -12,7 +12,7 @@
 ### How it works
 Users can create an account with Escape Plan and immediately either jump into building and sharing their own travel itineraries, or viewing those that others have created to seek inspiration. Simply click "Make My Escapes" to start crafting your dream trip, "View My Escape" to review, edit, or delete your itineraries, or "Browse Escapes" to see what others have put together. Was your trip a raving success? Maybe share it with the world!
 ### Link: https://escapeplan.onrender.com/
-- Please note that deployment is still a work-in-progress, but go ahead and bookmark us!
+- Please note that devlopment is still a work-in-progress, bookmark us to see what features we're able to bring to you as development continues!
 ### Tech / Frameworks Used
 - MongoDB
     - Mongoose
